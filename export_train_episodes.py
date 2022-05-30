@@ -7,7 +7,7 @@ train_episodes_3 = parse_episodes_from_index("data/train.json", "data/train_3_do
 
 dev_episodes_1 = parse_episodes_from_index("data/dev.json", "data/dev_1_doc_indices.json", tokenizer=None, markers=False, cache=None, no_processing=True)
 
-dev_episodes_3 = parse_episodes_from_index("data/dev.json", "data/dev_1_doc_indices.json", tokenizer=None, markers=False, cache=None, no_processing=True)
+dev_episodes_3 = parse_episodes_from_index("data/dev.json", "data/dev_3_doc_indices.json", tokenizer=None, markers=False, cache=None, no_processing=True)
 
 with open('train_1_doc.json', 'w') as fout:
     json.dump(train_episodes_1, fout)
