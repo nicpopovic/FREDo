@@ -69,10 +69,10 @@ warmup_epochs = args.warmup_epochs
 learning_rate = args.learning_rate
 
 if args.num_epochs != 0:
-    training_episodes = parse_episodes("data/train.json", tokenizer, K=args.support_docs_train, n_queries=args.query_docs_train, n_samples=args.samples_data_train, markers=args.use_markers, balancing=args.balancing_train, seed=args.seed_data, ensure_positive=args.ensure_positive, cache=None)
-    dev_episodes = parse_episodes("data/dev.json", tokenizer, K=args.support_docs_eval, n_queries=args.query_docs_eval, n_samples=args.samples_data_dev, markers=args.use_markers, balancing=args.balancing_eval, seed=args.seed_data, ensure_positive=args.ensure_positive, cache=None)
-indomain_test_episodes = parse_episodes_from_index("data/test_docred.json", f"data/test_in_domain_{args.support_docs_eval}_doc_indices.json", tokenizer, markers=args.use_markers, cache=None)
-scierc_test_episodes = parse_episodes_from_index("data/test_scierc.json", f"data/test_cross_domain_{args.support_docs_eval}_doc_indices.json", tokenizer, markers=args.use_markers, cache=None)
+    training_episodes = parse_episodes("data/train.json", tokenizer, K=args.support_docs_train, n_queries=args.query_docs_train, n_samples=args.samples_data_train, markers=args.use_markers, balancing=args.balancing_train, seed=args.seed_data, ensure_positive=args.ensure_positive, cache="cache/")
+    dev_episodes = parse_episodes("data/dev.json", tokenizer, K=args.support_docs_eval, n_queries=args.query_docs_eval, n_samples=args.samples_data_dev, markers=args.use_markers, balancing=args.balancing_eval, seed=args.seed_data, ensure_positive=args.ensure_positive, cache="cache/")
+indomain_test_episodes = parse_episodes_from_index("data/test_docred.json", f"data/test_in_domain_{args.support_docs_eval}_doc_indices.json", tokenizer, markers=args.use_markers, cache="cache/")
+scierc_test_episodes = parse_episodes_from_index("data/test_scierc.json", f"data/test_cross_domain_{args.support_docs_eval}_doc_indices.json", tokenizer, markers=args.use_markers, cache="cache/")
 # %%
 if args.model != "knnproto":
     torch.use_deterministic_algorithms(True)

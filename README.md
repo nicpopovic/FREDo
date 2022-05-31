@@ -12,7 +12,11 @@ Code and data for the NAACL 2022 paper [Few-Shot Document-Level Relation Extract
 # Accessing the data
 
 ## Download Sampled Episodes
-If you are only interested in the raw data for the tasks, you can directly download sampled episodes here: https://drive.google.com/drive/folders/1PuJSJxqZP4ijxFSBZZ6Fmc0SgR2S8pYU?usp=sharing (test_episodes.zip \[~120 MB DL, ~550MB on disk\] + train_episodes.zip \[~330MB DL, ~1.4GB on disk\])
+If you are only interested in the raw data for the tasks, you can directly download sampled episodes here: https://drive.google.com/drive/folders/1PuJSJxqZP4ijxFSBZZ6Fmc0SgR2S8pYU?usp=sharing (test_episodes.zip \[~120 MB DL, ~550MB on disk\] + train_episodes_single.zip \[~330MB DL, ~1.4GB on disk\]+ train_episodes_schema.zip \[~330MB DL, ~1.4GB on disk\])
+
+Training and dev/validation episodes are available in two different versions: "single" or "schema".
+For "single", each episode contains annotations for only a single relation type.
+For "schema", each episode contains annotations for multiple relation types sampled via the same procedure as the test episodes (see section 4.3 of paper).
 
 In our paper and code we evaluate *macro* F1 scores across relation types.
 
@@ -488,6 +492,16 @@ python train.py --query_docs_train 3 --query_docs_eval 3 --support_docs_train 1 
 ## Section 5.2 Sampling Training & Development Episodes
 
 Covered by parse_episodes() in src/data.py (lines 144-324)
+
+In order to control sampling strategies, use the following parameters:
+* --balancing_train hard/soft/single
+* --balancing_dev hard/soft/single
+
+The above parameters control how relation types are sampled for train/dev episodes. "hard" balances the annotated relation types so that the resulting episodes contain the same amount of examples for each relation type. "soft" corresponds to the balancing procedure used for the test episodes, which is outlined in section 4.3 of the paper. "single" annotates only a single relation type per document.
+
+* --ensure_positive True/False
+
+The above parameter controls whether the query documents contain at least a single positive example of the relation type r_s.
 
 Parameters for test sets are found in train.py (lines 70-71)
 

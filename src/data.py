@@ -1,5 +1,4 @@
 # %%
-from posixpath import realpath
 import random
 import json
 from tqdm import tqdm
