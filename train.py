@@ -41,7 +41,7 @@ parser.add_argument("--balancing_eval", type=str, default="single", help="balanc
 parser.add_argument("--eval_batch_size", type=int, default=2, help="eval batch size")
 parser.add_argument("--train_batch_size", type=int, default=2, help="training batch size")
 parser.add_argument("--warmup_epochs", type=int, default=1, help="warmup epochs")
-parser.add_argument("--learning_rate", type=float, default=3e-5, help="learning rate")
+parser.add_argument("--learning_rate", type=float, default=1e-5, help="learning rate")
 parser.add_argument("--loss", type=str, default="atloss", help="loss function")
 parser.add_argument("--ensure_positive", type=bool, default=True, help="ensure positive example query")
 parser.add_argument("--load_checkpoint", type=str, default=None, help="path to checkpoint")
